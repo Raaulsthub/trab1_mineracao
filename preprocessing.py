@@ -39,5 +39,24 @@ print('ONE HOT ENCODING: ', end='\n\n')
 one_hot_encoding(df, 'Jogadore(a)s')
 print(df.head(10), end='\n\n')
 
+print("MAKING A WON/LOST COLUMN", end='\n\n')
+df['Won'] = np.zeros(len(df.index)).astype(int)
+
+itr = 0
+while itr < len(df.index):
+    itr += 1
+    if df['Oponentes'][itr] < df['Amigos'][itr]:
+        df['Won'][itr] = 1
+
+
+print(df.head(10), end='\n\n')
+
 df.to_csv('./data/full_withNames.csv')
+
+df.drop(['Jogadore(a)s', 'Amigos', 'Oponentes'], axis=1, inplace=True)
+print("DATA FRAME FINAL: ")
+print(df.head(10), end='\n\n')
+
 df.to_csv('./data/full.csv')
+
+
