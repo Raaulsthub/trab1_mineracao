@@ -35,8 +35,9 @@ for i in players:
     df[i] = np.zeros(len(df.index)).astype(int)
 print(df.head(10), end='\n\n')
 
+print('ONE HOT ENCODING: ', end='\n\n')
 one_hot_encoding(df, 'Jogadore(a)s')
+print(df.head(10), end='\n\n')
 
-print(df.head(10))
-
-#df.to_csv('./data/full.csv')
+df.to_csv('./data/full_withNames.csv')
+df.to_csv('./data/full.csv')
