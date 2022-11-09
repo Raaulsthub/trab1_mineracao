@@ -20,4 +20,5 @@ rules['index'] = index
 rules.set_index('index', inplace=True)
 rules.to_csv("./data/rules.csv")
 
+
 print(rules.head(100))

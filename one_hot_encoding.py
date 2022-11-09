@@ -13,3 +13,4 @@ def one_hot_encoding(df=pd.DataFrame([]), column_to_be_encoded=''):
         for j in df.columns:
             if(j in i):
                 df[j][itr] = 1
+                
