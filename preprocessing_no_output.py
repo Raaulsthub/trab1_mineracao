@@ -44,4 +44,3 @@ print("DATA FRAME FINAL: ")
 print(df.head(10), end='\n\n')
 
 df.to_csv('./data/full.csv')
-
