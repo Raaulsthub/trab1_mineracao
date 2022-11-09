@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import OneHotEncoder
+from one_hot_encoding import one_hot_encoding
 
 print("DATA PREPROCESSING", end='\n\n')
 
@@ -23,11 +23,20 @@ print("REINDEXING", end='\n\n')
 df.set_index('Partida', inplace=True)
 print(df.head(10), end='\n\n')
 
-print("TAKING SPACES OUT: ", end='\n\n')
-df['Jogadore(a)s'] = df['Jogadore(a)s'].str.replace(" ", "")
+# taking out spaces, taking out 'ç', making it all upercase
+print("FORMATING STRING COLUMN ", end='\n\n')
+df['Jogadore(a)s'] = df['Jogadore(a)s'].str.replace(" ", "").str.upper().str.replace('Ç', 'C').str.replace('�', 'C')
 print(df.head(10), end='\n\n')
 
-encoder = OneHotEncoder()
-df_ = OneHotEncoder.fit_transform(df['Jogadore(a)s'])
+players = ['STEEVE', 'FRANCOIS', 'ALONSO', 'JIMMY', 'RICK', 'YURIKO', 'BARBARA', 'SHELDA']
+
+print("ADDING ONE HOT ENCODING COLUMNS: ")
+for i in players:
+    df[i] = np.zeros(len(df.index)).astype(int)
+print(df.head(10), end='\n\n')
+
+one_hot_encoding(df, 'Jogadore(a)s')
+
+print(df.head(10))
 
 #df.to_csv('./data/full.csv')
