@@ -9,7 +9,7 @@ print(df.head(10), end='\n\n')
 
 
 # Building the model
-frq_items = apriori(df, min_support = 0.1, use_colnames = True)
+frq_items = apriori(df, min_support = 0.09, use_colnames = True)
   
 # Collecting the inferred rules in a dataframe
 rules = association_rules(frq_items, metric ="lift", min_threshold = 1)

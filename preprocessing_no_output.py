@@ -29,12 +29,14 @@ for i in players:
 one_hot_encoding(df, 'Jogadore(a)s')
 
 df['Won'] = np.zeros(len(df.index)).astype(int)
+df['Lost'] = np.ones(len(df.index)).astype(int)
 
 itr = 0
 while itr < len(df.index):
     itr += 1
     if df['Oponentes'][itr] < df['Amigos'][itr]:
         df['Won'][itr] = 1
+        df['Lost'][itr] = 0
 
 
 df.to_csv('./data/full_withNames.csv')

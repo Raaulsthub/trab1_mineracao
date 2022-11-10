@@ -41,12 +41,16 @@ print(df.head(10), end='\n\n')
 
 print("MAKING A WON/LOST COLUMN", end='\n\n')
 df['Won'] = np.zeros(len(df.index)).astype(int)
+df['Lost'] = np.ones(len(df.index)).astype(int)
 
 itr = 0
 while itr < len(df.index):
     itr += 1
     if df['Oponentes'][itr] < df['Amigos'][itr]:
         df['Won'][itr] = 1
+        df['Lost'][itr] = 0
+
+
 
 
 print(df.head(10), end='\n\n')
